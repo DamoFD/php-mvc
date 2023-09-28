@@ -90,4 +90,17 @@ class CatController extends Controller
             echo "400 Bad Request: Invalid input.";
         }
     }
+
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(403);
+            echo "403 Forbidden: You can only access this endpoint using POST method.";
+            exit;
+        }
+
+        $this->cat->delete($id);
+        header("Location: /public/cat/index");
+        exit;
+    }
 }

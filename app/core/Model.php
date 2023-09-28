@@ -73,4 +73,15 @@ class Model
             echo "Error: " . $stmt->error;
         }
     }
+
+    public function delete(int $id): void
+    {
+        $stmt = $this->conn->prepare("DELETE FROM {$this->table} WHERE id = ?");
+
+        $stmt->bind_param('i', $id);
+
+        if ($stmt->execute() === FALSE) {
+            echo "Error: " . $stmt->error;
+        }
+    }
 }
