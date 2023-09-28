@@ -2,7 +2,7 @@
 
 class HomeController extends Controller
 {
-    public function index($name = '')
+    public function index($name = ''): void
     {
         $user = $this->model('User');
         $user->name = $name;
